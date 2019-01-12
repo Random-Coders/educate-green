@@ -1,0 +1,12 @@
+ label {
+     display: flex;
+     align-items: center;
+     margin: 2px;
+}
+ select {
+     flex: auto;
+     margin-left: 10px;
+}
+ html{
+    height:100%
+}
