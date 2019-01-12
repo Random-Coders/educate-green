@@ -7,7 +7,7 @@ from json import load, dump # parse and add json data
 # Import os
 import os
 
-# config file
+# Import config
 import config
 
 # Flask app
