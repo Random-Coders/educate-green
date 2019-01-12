@@ -7,7 +7,7 @@ from json import load, dump # parse and add json data
 # Import os
 import os
 
-# Marvin Imports
+# config file
 import config
 
 # Flask app
