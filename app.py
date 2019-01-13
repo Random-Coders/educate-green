@@ -50,6 +50,15 @@ def transportlocation():
 	route_length_meters = int(root[2][0][0].text)
 	pnds_carbon_released = round(route_length_meters / 37980.52 * 20, 2)
 	return render_template('carbon_footprint.html', carbon=pnds_carbon_released)
+    if 'pnds_carbon_released' in request.cookies:
+        # cookie found
+        checklist_name = request.cookies['pnds_carbon_released']
+        return render_template('something.html')
+    else:
+        # cookie making
+        res = make_response(render_template('transportation.html'))#var, list='None'))
+        res.set_cookie('pnds_carbon_released', str(pnds_carbon_released), max_age=60*60*24*365)
+        return res
 
 # run app
 app.run(
