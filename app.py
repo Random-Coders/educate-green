@@ -33,6 +33,11 @@ def transportlocation():
 	lat2 = request.args.get('lon2')
 	print(lat1, lon1)
 	return "helloq"
+
+@app.route("/food", methods=['GET'])
+def food():
+    return render_template('food.html')
+
 # run app
 app.run(
     #host='0.0.0.0', # host to view from outside the network

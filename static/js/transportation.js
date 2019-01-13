@@ -74,4 +74,3 @@
     });
     routeSummaryInstance.on()
 })(tomtom);
-
