@@ -1,22 +1,3 @@
-function readTextFile(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                alert(allText);
-            }
-        }
-    }
-    console.log("reading file")
-    rawFile.send(null);
-}
-readTextFile('../../secrets.txt')
 // Define your product name and version
 tomtom.setProductInfo('Codepen Examples', '4.46.3');
 // Setting TomTom keys
@@ -26,7 +7,7 @@ tomtom.searchKey('9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn');
 var map = tomtom.L.map('map', {
     key: '9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn',
     source: 'vector',
-    basePath: '../../templates/sdk'
+    basePath: '../sdk'
 });
 map.zoomControl.setPosition('topright');
 var unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);
