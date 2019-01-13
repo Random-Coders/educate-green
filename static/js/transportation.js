@@ -1,6 +1,6 @@
 (function(tomtom) {
     // Define your product name and version
-    tomtom.setProductInfo('Codepen Examples', '4.46.3');
+    tomtom.setProductInfo('green_house_emissions', '4.46.3');
     // Setting the TomTom keys
     tomtom.routingKey('9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn');
     tomtom.searchKey('9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn');
@@ -8,7 +8,7 @@
     var map = tomtom.L.map('map', {
         key: '9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn',
         source: 'vector',
-        basePath: '../sdk'
+        basePath: 'https://api.tomtom.com/maps-sdk-js/4.46.3/examples/sdk'
     });
     map.zoomControl.setPosition('topright');
     var unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);
