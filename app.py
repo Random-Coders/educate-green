@@ -25,6 +25,10 @@ def index():
 def transportation():
     return render_template('transportation.html')
 
+@app.route("/food", methods=['GET'])
+def food():
+    return render_template('food.html')
+
 # run app
 app.run(
     #host='0.0.0.0', # host to view from outside the network
