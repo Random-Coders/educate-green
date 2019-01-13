@@ -59,6 +59,7 @@
         $.ajax({
           url: `/transportlocation/?lat1=${first_lat}&lon1=${first_lon}&lat2=${sec_lat}&lon2=${sec_lon}`,
           type: "get",
+          data: {},
           success: function(response) {
             if (response.redirectUrl !== undefined) {
                 window.location.replace(response.redirectUrl);
