@@ -26,6 +26,14 @@ def index():
 def transportation():
     return render_template('transportation.html')
 
+@app.route("/agriculture", methods=['GET'])
+def agriculture():
+    return render_template('agriculture.html')
+
+@app.route("/electricity", methods=['GET'])
+def electricity():
+    return render_template('electricity.html')
+
 @app.route("/transportlocation/")
 def transportlocation():
 	lat1_ = request.args.get('lat1')
@@ -37,10 +45,6 @@ def transportlocation():
 	r = urllib.request.urlopen('https://api.tomtom.com/routing/1/calculateRoute/52.50931,13.42936:52.50274,13.43872?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
 	print(r.read())
 	return r.read()
-
-@app.route("/food", methods=['GET'])
-def food():
-    return render_template('food.html')
 
 # run app
 app.run(
