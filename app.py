@@ -25,6 +25,14 @@ def index():
 def transportation():
     return render_template('transportation.html')
 
+@app.route("/agriculture", methods=['GET'])
+def agriculture():
+    return render_template('agriculture.html')
+
+@app.route("/electricity", methods=['GET'])
+def electricity():
+    return render_template('electricity.html')
+
 @app.route("/transportlocation/")
 def transportlocation():
 	lat1 = request.args.get('lat1')
@@ -33,10 +41,6 @@ def transportlocation():
 	lat2 = request.args.get('lon2')
 	print(lat1, lon1)
 	return "helloq"
-
-@app.route("/food", methods=['GET'])
-def food():
-    return render_template('food.html')
 
 # run app
 app.run(

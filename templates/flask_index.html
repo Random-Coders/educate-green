@@ -8,6 +8,12 @@
 {% endblock %}
 
 {% block content %}
+  <div class="topnav">
+    <a href="/">Home</a>
+    <a href="/food">Food</a>
+    <a href="/transportation">Transportation</a>
+    <a href="/electricity">Electricity Creation</a>
+  </div>
   <br>
   <div class="container">
     <div class="title">
@@ -17,7 +23,7 @@
   <br>
   <div class="container">
   <div class="jumbotron">
-    <center><h2>Quick Facts</h2>
+    <center><h2>How Carbon Footprint is Measured</h2>
       <br>
       <div class="row">
         <div class="col">
@@ -26,6 +32,45 @@
         <div class="col">
           <h5>A carbon footprint is measured in tonnes of carbon dioxide equivalent (tCO2e). CO2e is calculated by multiplying the emissions of each of the six greenhouse gases by its 100 year global warming potential (GWP).</h5>
           <h5>A carbon footprint considers all six of the Kyoto Protocol greenhouse gases: Carbon dioxide (CO2), Methane (CH4), Nitrous oxide (N2O), Hydrofluorocarbons (HFCs), Perfluorocarbons (PFCs) and Sulphur hexafluoride (SF6).</h5>
+        </div>
+      </div>
+    </center>
+  </div>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+  <div class="jumbotron">
+    <center><h2>Carbon Emission Impact</h2>
+      <br>
+      <div class="row">
+        <div class="col">
+          <ul>
+            <h3>Transportation</h3>
+            <a class="btn btn-success btn-block btn-lg" href="/transportation" role="button">Find Travel Impact</a>
+            <div class="index">
+              <img class="index" src="https://www.driving.co.uk/s3/st-driving-prod/uploads/2016/06/gone-in-a-puff-of-smoke.jpg" height="300" width="500" alt="Carbon Emission Transportation Image">
+            </div>
+          </ul>
+        </div>
+
+        <div class="col">
+          <ul>
+            <h3>Food</h3>
+            <a class="btn btn-success btn-block btn-lg" href="/food" role="button">Find Food Impact</a>
+            <div class="index">
+              <img class="index" src="https://i.pinimg.com/originals/13/53/a9/1353a94189c8f0cfe0c0019090a05d12.jpg" height="350" width="500" alt="Carbon Emission Food Image">
+            </div>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <h3>Energy Creation</h3>
+            <a class="btn btn-success btn-block btn-lg" href="/electricity" role="button">Electricity Creation Impact</a>
+            <div class="index">
+              <img class="index" src="https://media2.s-nbcnews.com/i/MSNBC/Components/Video/201712/Coal-fueled_plant_closes.jpg" height="300" width="500" alt="Carbon Emission Energy Creation Image">
+            </div>
+          </ul>
         </div>
       </div>
     </center>
