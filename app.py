@@ -25,9 +25,9 @@ def index():
 def transportation():
     return render_template('transportation.html')
 
-@app.route("/food", methods=['GET'])
-def food():
-    return render_template('food.html')
+@app.route("/agriculture", methods=['GET'])
+def agriculture():
+    return render_template('agriculture.html')
 
 @app.route("/electricity", methods=['GET'])
 def electricity():
