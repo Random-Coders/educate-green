@@ -1,0 +1,57 @@
+{% block head %}
+  <meta charset='utf-8'>
+  <title>Green House Emissions</title>
+  <meta name="description" content="Green House emissions information page">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/all.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/transportation.css">
+  <link rel='stylesheet' type='text/css' href="../static/sdk/map.css"/>
+{% endblock %}
+
+{% block head_js%}
+    <script src="../static/sdk/tomtom.min.js"></script>
+{% endblock%}
+
+{% block body %}
+    <div id='map' class='use-all-space'></div>
+    <script>
+        // Define your product name and version
+        // Define your product name and version
+        tomtom.setProductInfo('green_house_emission', '4.46.3');
+        var endIcon = tomtom.L.icon({iconUrl: '../static/sdk/images/end-white.png', iconSize: [30, 30], iconAnchor: [15, 15]});
+        var startIcon = tomtom.L.icon({iconUrl: '../static/sdk/images/static-white.png', iconSize: [30, 30], iconAnchor: [15, 15]});
+        var map = tomtom.L.map('map', {
+            key: '9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn',
+            source: 'vector',
+            basePath: '../static/sdk'
+        });
+
+        function addMarkers(feature) {
+            var startPoint, endPoint;
+            if (feature.geometry.type === 'MultiLineString') {
+                startPoint = feature.geometry.coordinates[0][0].reverse(); //get first point from first line
+                endPoint = feature.geometry.coordinates.slice(-1)[0].slice(-1)[0].reverse(); //get last point from last line
+            } else {
+                startPoint = feature.geometry.coordinates[0].reverse();
+                endPoint = feature.geometry.coordinates.slice(-1)[0].reverse();
+            }
+            tomtom.L.marker(startPoint, {icon: startIcon}).addTo(map);
+            tomtom.L.marker(endPoint, {icon: endIcon}).addTo(map);
+        }
+
+        tomtom.routingKey('9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn');
+        tomtom.routing({
+            traffic: false
+        })
+            .locations('{{lat1}},{{lon1}}:{{lat2}},{{lon2}}')
+            .go().then(function(routeJson) {
+                var route = tomtom.L.geoJson(routeJson, {
+                    onEachFeature: addMarkers,
+                    style: {color: '#00d7ff', opacity: 0.8}
+                }).addTo(map);
+                map.fitBounds(route.getBounds(), {padding: [5, 5]});
+            });
+
+    </script>
+{% endblock %}
