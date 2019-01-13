@@ -3,7 +3,7 @@
 # Flask imports
 from flask import Flask, render_template, request, make_response, redirect
 from json import load, dump # parse and add json data
-import requests
+import urllib.request
 
 # Import os
 import os
@@ -41,10 +41,14 @@ def transportlocation():
 	lat2_ = request.args.get('lat2')
 	lon2_ = request.args.get('lon2')
 	print(lat1_, lon1_)
-	import urllib.request
-	r = urllib.request.urlopen('https://api.tomtom.com/routing/1/calculateRoute/52.50931,13.42936:52.50274,13.43872?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
-	print(r.read())
-	return r.read()
+	r = urllib.request.urlopen(f'https://api.tomtom.com/routing/1/calculateRoute/{lat1_},{lon1_}:{lat2_},{lon2_}?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
+	r = r.read()
+	import xml.etree.ElementTree as ET
+
+	root = ET.fromstring(r)
+	print(root.tag)
+	print(root[2][0][0].text)
+	return "hi"
 
 # run app
 app.run(
