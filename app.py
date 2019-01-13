@@ -1,7 +1,7 @@
 # Imports
 
 # Flask imports
-from flask import Flask, render_template, request, make_response, redirect
+from flask import Flask, render_template, request, make_response, redirect, session
 from json import load, dump # parse and add json data
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -37,26 +37,25 @@ def electricity():
 
 @app.route("/transportlocation/")
 def transportlocation():
-	lat1_ = request.args.get('lat1')
-	lon1_ = request.args.get('lon1')
-	lat2_ = request.args.get('lat2')
-	lon2_ = request.args.get('lon2')
-	print(lat1_, lon1_)
-	r = urllib.request.urlopen(f'https://api.tomtom.com/routing/1/calculateRoute/{lat1_},{lon1_}:{lat2_},{lon2_}?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
-	r = r.read()
+    lat1_ = request.args.get('lat1')
+    lon1_ = request.args.get('lon1')
+    lat2_ = request.args.get('lat2')
+    lon2_ = request.args.get('lon2')
+    print(lat1_, lon1_)
+    r = urllib.request.urlopen(f'https://api.tomtom.com/routing/1/calculateRoute/{lat1_},{lon1_}:{lat2_},{lon2_}?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
+    r = r.read()
 
-	root = ET.fromstring(r)
-	print(root.tag)
-	route_length_meters = int(root[2][0][0].text)
-	pnds_carbon_released = round(route_length_meters / 37980.52 * 20, 2)
-	return render_template('carbon_footprint.html', carbon=pnds_carbon_released)
+    root = ET.fromstring(r)
+    print(root.tag)
+    route_length_meters = int(root[2][0][0].text)
+    pnds_carbon_released = round(route_length_meters / 37980.52 * 20, 2)
     if 'pnds_carbon_released' in request.cookies:
         # cookie found
-        checklist_name = request.cookies['pnds_carbon_released']
-        return render_template('something.html')
+        carbon_cookie = request.cookies['pnds_carbon_released']
+        return render_template('carbon_footprint.html', carbon=pnds_carbon_released)
     else:
         # cookie making
-        res = make_response(render_template('transportation.html'))#var, list='None'))
+        res = make_response(render_template('carbon_footprint.html', carbon=pnds_carbon_released))#var, list='None'))
         res.set_cookie('pnds_carbon_released', str(pnds_carbon_released), max_age=60*60*24*365)
         return res
 
