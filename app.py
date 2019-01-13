@@ -3,6 +3,7 @@
 # Flask imports
 from flask import Flask, render_template, request, make_response, redirect
 from json import load, dump # parse and add json data
+import requests
 
 # Import os
 import os
@@ -35,12 +36,15 @@ def electricity():
 
 @app.route("/transportlocation/")
 def transportlocation():
-	lat1 = request.args.get('lat1')
-	lon1 = request.args.get('lon1')
-	lat2 = request.args.get('lat2')
-	lat2 = request.args.get('lon2')
-	print(lat1, lon1)
-	return "helloq"
+	lat1_ = request.args.get('lat1')
+	lon1_ = request.args.get('lon1')
+	lat2_ = request.args.get('lat2')
+	lon2_ = request.args.get('lon2')
+	print(lat1_, lon1_)
+	import urllib.request
+	r = urllib.request.urlopen('https://api.tomtom.com/routing/1/calculateRoute/52.50931,13.42936:52.50274,13.43872?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
+	print(r.read())
+	return r.read()
 
 # run app
 app.run(

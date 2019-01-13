@@ -53,7 +53,7 @@
         var sec_lon = eventObject.points[1]["lon"]      
         console.log(eventObject.points)
         console.log(eventObject.points[eventObject.points.length-1])
-        var hostname = `/transportlocation/?lat1=${first_lat},lon1=${first_lon},lat2={sec_lat},lon2={sec_lon}`;
+        var hostname = `/transportlocation/?lat1=${first_lat}&lon1=${first_lon}&lat2=${sec_lat}&lon2=${sec_lon}`;
         console.log(hostname);
         window.location.replace(hostname)
         // routeOnMapView.draw(eventObject.points);
@@ -72,5 +72,4 @@
             routeInputsInstance.searchBoxes.slice(-1)[0];
         location.setResultData(eventObject.object);
     });
-    routeSummaryInstance.on()
 })(tomtom);
