@@ -8,7 +8,7 @@
     var map = tomtom.L.map('map', {
         key: '9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn',
         source: 'vector',
-        basePath: '../sdk'
+        basePath: 'https://api.tomtom.com/maps-sdk-js/4.46.3/examples/sdk'
     });
     map.zoomControl.setPosition('topright');
     var unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);

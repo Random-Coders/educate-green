@@ -52,7 +52,13 @@ def transportlocation():
     if 'pnds_carbon_released' in request.cookies:
         # cookie found
         carbon_cookie = request.cookies['pnds_carbon_released']
-        return render_template('carbon_footprint.html', carbon=pnds_carbon_released)
+        carbon_cookie = f'{carbon_cookie},{pnds_carbon_released}'
+        print('carbon_cookie', carbon_cookie)
+        total_carbon = [float(x) for x in carbon_cookie.split(',')]
+        total_carbon = round(sum(total_carbon), 2)
+        res = make_response(render_template('carbon_footprint.html', carbon=pnds_carbon_released, total=total_carbon))
+        res.set_cookie('pnds_carbon_released', str(carbon_cookie), max_age=60*60*24*365)
+        return res
     else:
         # cookie making
         res = make_response(render_template('carbon_footprint.html', carbon=pnds_carbon_released))#var, list='None'))
