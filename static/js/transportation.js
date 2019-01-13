@@ -55,7 +55,17 @@
         console.log(eventObject.points[eventObject.points.length-1])
         var hostname = `/transportlocation/?lat1=${first_lat}&lon1=${first_lon}&lat2=${sec_lat}&lon2=${sec_lon}`;
         console.log(hostname);
-        window.location.replace(hostname)
+        // window.location.replace(hostname)
+        $.ajax({
+          url: `/transportlocation/?lat1=${first_lat}&lon1=${first_lon}&lat2=${sec_lat}&lon2=${sec_lon}`,
+          type: "get",
+          success: function(response) {
+            $("#carbon-footprint").html(response);
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+          }
+        });
         // routeOnMapView.draw(eventObject.points);
     });
     routeInputsInstance.on(routeInputsInstance.Events.LocationsCleared, function(eventObject) {

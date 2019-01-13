@@ -47,8 +47,9 @@ def transportlocation():
 
 	root = ET.fromstring(r)
 	print(root.tag)
-	print(root[2][0][0].text)
-	return "hi"
+	route_length_meters = int(root[2][0][0].text)
+	pnds_carbon_released = round(route_length_meters / 37980.52 * 20, 2)
+	return render_template('carbon_footprint.html', carbon=pnds_carbon_released)
 
 # run app
 app.run(
