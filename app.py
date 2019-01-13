@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request, make_response, redirect
 from json import load, dump # parse and add json data
 import urllib.request
+import xml.etree.ElementTree as ET
 
 # Import os
 import os
@@ -43,7 +44,6 @@ def transportlocation():
 	print(lat1_, lon1_)
 	r = urllib.request.urlopen(f'https://api.tomtom.com/routing/1/calculateRoute/{lat1_},{lon1_}:{lat2_},{lon2_}?key=9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn')
 	r = r.read()
-	import xml.etree.ElementTree as ET
 
 	root = ET.fromstring(r)
 	print(root.tag)

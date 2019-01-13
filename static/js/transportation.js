@@ -60,6 +60,11 @@
           url: `/transportlocation/?lat1=${first_lat}&lon1=${first_lon}&lat2=${sec_lat}&lon2=${sec_lon}`,
           type: "get",
           success: function(response) {
+            if (response.redirectUrl !== undefined) {
+                window.location.replace(response.redirectUrl);
+            } else {
+                // No redirect found, do something else
+            }
             $("#carbon-footprint").html(response);
           },
           error: function(xhr) {
