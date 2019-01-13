@@ -52,6 +52,11 @@ h2 {
   padding-bottom: 40px;
 }
 
-.row {
-  float: left;
+.fillwidth {
+    min-width: 100%;
+    height: auto;
+}
+.fillheight {
+    min-height: 100%; 
+    width: auto;
 }
