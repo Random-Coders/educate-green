@@ -26,7 +26,7 @@ tomtom.searchKey('9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn');
 var map = tomtom.L.map('map', {
     key: '9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn',
     source: 'vector',
-    basePath: '../../templates/sdk'
+    basePath: '../sdk'
 });
 map.zoomControl.setPosition('topright');
 var unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);

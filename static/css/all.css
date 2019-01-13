@@ -1,6 +1,21 @@
-
+body, html {
+  height: 100%;
+  margin: 0;
+}
 body {
-  background-image: url("https://hanslodge.com/images2018/free-leaf-cliparts/free-leaf-cliparts-4.png");
+  background-image: url("https://www.technocracy.news/wp-content/uploads/2016/06/smokestacks.jpg");
+  width: 100%;
+  height: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+h2 {
+  text-decoration: underline;
+}
+.title{
+  background: #c9f7ff;
 }
 h2 {
   text-decoration: underline;
