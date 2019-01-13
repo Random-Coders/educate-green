@@ -8,7 +8,7 @@
     var map = tomtom.L.map('map', {
         key: '9eA3U6IaQC3t12wT4NNgNmvdpWiGw9bn',
         source: 'vector',
-        basePath: 'https://api.tomtom.com/maps-sdk-js/4.46.3/examples/sdk'
+        basePath: '../sdk'
     });
     map.zoomControl.setPosition('topright');
     var unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);
@@ -50,7 +50,7 @@
         var first_lat = eventObject.points[0]["lat"]
         var first_lon = eventObject.points[0]["lon"]
         var sec_lat = eventObject.points[1]["lat"]
-        var sec_lon = eventObject.points[1]["lon"]      
+        var sec_lon = eventObject.points[1]["lon"]
         console.log(eventObject.points)
         console.log(eventObject.points[eventObject.points.length-1])
         var hostname = `/transportlocation/?lat1=${first_lat}&lon1=${first_lon}&lat2=${sec_lat}&lon2=${sec_lon}`;
