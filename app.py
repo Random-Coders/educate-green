@@ -29,9 +29,9 @@ def transportation():
 def food():
     return render_template('food.html')
 
-@app.route("/energy", methods=['GET'])
-def food():
-    return render_template('energy.html')
+@app.route("/electricity", methods=['GET'])
+def electricity():
+    return render_template('electricity.html')
 
 # run app
 app.run(
