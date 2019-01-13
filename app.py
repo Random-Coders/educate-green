@@ -29,6 +29,10 @@ def transportation():
 def food():
     return render_template('food.html')
 
+@app.route("/energy", methods=['GET'])
+def food():
+    return render_template('energy.html')
+
 # run app
 app.run(
     #host='0.0.0.0', # host to view from outside the network
