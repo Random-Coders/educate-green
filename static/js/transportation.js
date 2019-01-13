@@ -72,7 +72,7 @@
             //Do Something to handle error
           }
         });
-        // routeOnMapView.draw(eventObject.points);
+        routeOnMapView.draw(eventObject.points);
     });
     routeInputsInstance.on(routeInputsInstance.Events.LocationsCleared, function(eventObject) {
         routeSummaryInstance.hide();
