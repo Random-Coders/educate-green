@@ -33,6 +33,15 @@ def agriculture():
 def electricity():
     return render_template('electricity.html')
 
+@app.route("/transportlocation/")
+def transportlocation():
+	lat1 = request.args.get('lat1')
+	lon1 = request.args.get('lon1')
+	lat2 = request.args.get('lat2')
+	lat2 = request.args.get('lon2')
+	print(lat1, lon1)
+	return "helloq"
+
 # run app
 app.run(
     #host='0.0.0.0', # host to view from outside the network
